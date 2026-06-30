@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import authRoutes from './routes/authRoute.js';
 
 // Initialize the express app
 const app = express();
@@ -22,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // We will plug in routers here in subsequent phases
-// Example: app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 
 // Global Error Handler Middleware
 app.use((err, req, res, next) => {
