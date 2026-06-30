@@ -39,7 +39,8 @@ const Signup = () => {
     }
     setIsLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/auth/signup', formData);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      await axios.post(`${apiUrl}/api/auth/signup`, formData);
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.msg || 'Signup failed. Please try again.');
